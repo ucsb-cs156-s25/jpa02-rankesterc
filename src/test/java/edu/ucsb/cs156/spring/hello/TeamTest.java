@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class TeamTest {
 
-    Team team;
+    Team team, team2, team3;
 
     @BeforeEach
     public void setup() {
@@ -33,5 +33,24 @@ public class TeamTest {
 
     // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
     // 100% mutation coverage (all mutants timed out or killed)
+
+    @Test
+    public void object_equal_case1() {
+        assert(team.equals(team));
+    }
+    @Test
+    public void object_equal_case2() {
+        assert(!team.equals(1));
+    }
+    @Test
+    public void object_equal_case3() {
+        team2 = new Team("test-team"); 
+        assert(team.equals(team2));
+    }
+    @Test
+    public void object_equal_case4() {
+        team3 = new Team("fail_test-team"); 
+        assert(!team.equals(team3));
+    }
 
 }
