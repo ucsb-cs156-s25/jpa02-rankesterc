@@ -7,16 +7,23 @@ import org.junit.jupiter.api.Test;
 
 public class TeamTest {
 
-    Team team, team2, team3;
+    Team team, team1, team2, team3, team4;
 
     @BeforeEach
     public void setup() {
-        team = new Team("test-team");    
+        team = new Team("test-team");   
+        team1 = new Team("test-team"); 
+        team2 = new Team("test-team"); 
+        team2.addMember("Ran");
+        team3 = new Team("fail_test-team"); 
+        team4 = new Team("fail_test-team"); 
+        team4.addMember("Ran");
     }
 
     @Test
     public void getName_returns_correct_name() {
        assert(team.getName().equals("test-team"));
+
     }
 
     @Test
@@ -31,9 +38,6 @@ public class TeamTest {
         assertEquals(expectedResult, result);
     }
 
-    // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
-    // 100% mutation coverage (all mutants timed out or killed)
-
     @Test
     public void object_equal_case1() {
         assert(team.equals(team));
@@ -43,14 +47,20 @@ public class TeamTest {
         assert(!team.equals(1));
     }
     @Test
-    public void object_equal_case3() {
-        team2 = new Team("test-team"); 
-        assert(team.equals(team2));
+    public void object_equal_case31() {
+        assert(team.equals(team1));
     }
     @Test
-    public void object_equal_case4() {
-        team3 = new Team("fail_test-team"); 
+    public void object_equal_case32() {
+        assert(!team.equals(team2));
+    }
+    @Test
+    public void object_equal_case33() {
         assert(!team.equals(team3));
+    }
+    @Test
+    public void object_equal_case34() {
+        assert(!team.equals(team4));
     }
 
 }
